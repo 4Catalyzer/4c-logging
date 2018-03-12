@@ -1,34 +1,57 @@
-const winston = require('winston');
+const omit = require('lodash/omit');
+const { Container, config, format, transports } = require('winston');
 
-winston.cli();
+const { combine, colorize, label: addLabel, printf } = format;
 
-const config = winston.config;
+const container = new Container();
+const TEST = process.env.NODE_ENV === 'test';
 
-const formatter = i =>
-  `${config.colorize(i.level, i.level)}:\t (${i.label}) ` +
-  `${i.message} ${i.meta ? `\t${JSON.stringify(i.meta, null, 2)}` : ''}`;
+let LEVEL = 'info';
 
-// Disable logging for tests
-if (process.env.NODE_ENV === 'test') {
-  winston.configure({ transports: [] });
+const appendMeta = format(i => {
+  const meta = omit(i, ['level', 'message', 'label']);
+  if (!Object.keys(meta).length) return i;
+  i.message = `${i.message}\t${JSON.stringify(meta, null, 2)}`; // eslint-disable-line
+  return i;
+});
 
-  Object.values(winston.loggers.loggers).forEach(l => {
-    l.configure({
-      transports: [],
-    });
+class ConsoleTransport extends transports.Console {
+  constructor(opts) {
+    super(opts);
+    this.silent = opts.silent;
+  }
+  log(...args) {
+    if (this.silent) return;
+    super.log(...args);
+  }
+}
+
+function add(id, label = id) {
+  container.add(id, {
+    level: LEVEL,
+    format: combine(
+      ...[
+        colorize(),
+        label && addLabel({ label, message: true }),
+        appendMeta(),
+        printf(i => `${i.level}:  ${i.message}`),
+      ].filter(Boolean),
+    ),
+    transports: [new ConsoleTransport({ silent: TEST })],
   });
+  return container.get(id);
 }
 
 module.exports = {
   config,
-  formatter,
-  add(name, label = name) {
-    winston.loggers.add(name, {
-      console: { label, formatter },
+  add,
+  get: name => container.get(name),
+  level(level) {
+    LEVEL = level;
+    Object.values(container.loggers).forEach(l => {
+      l.level = level; // eslint-disable-line
     });
   },
-  get(name) {
-    return winston.loggers.get(name);
-  },
-  logger: winston,
+
+  logger: add('default', null),
 };
