@@ -1,0 +1,44 @@
+{
+  "name": "@4c/logging",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/4Catalyzer/logging.git",
+  "author": "4Catalyzer",
+  "license": "MIT",
+  "scripts": {
+    "lint":
+      "eslint . && prettier --list-different --ignore-path .ignore '**/*.{json,css,md}'",
+    "format":
+      "eslint . --fix && prettier --write --ignore-path .eslintignore '**/*.{json,css,md}'",
+    "precommit": "lint-staged"
+  },
+  "prettier": {
+    "printWidth": 79,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.{json,css,md}": [
+      "prettier --write --ignore-path .eslintignore",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0",
+    "eslint-config-4catalyzer": "^0.3.3",
+    "eslint-config-import": "^0.13.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-prettier": "^2.5.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "winston": "^3.0.0-rc2"
+  }
+}
