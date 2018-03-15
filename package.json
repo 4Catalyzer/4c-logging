@@ -1,15 +1,13 @@
 {
   "name": "@4c/logging",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "repository": "https://github.com/4Catalyzer/logging.git",
   "author": "4Catalyzer",
   "license": "MIT",
   "scripts": {
-    "lint":
-      "eslint . && prettier --list-different --ignore-path .ignore '**/*.{json,css,md}'",
-    "format":
-      "eslint . --fix && prettier --write --ignore-path .eslintignore '**/*.{json,css,md}'",
+    "lint": "eslint . && prettier --list-different --ignore-path .ignore '**/*.{json,css,md}'",
+    "format": "eslint . --fix && prettier --write --ignore-path .eslintignore '**/*.{json,css,md}'",
     "precommit": "lint-staged"
   },
   "prettier": {
@@ -18,7 +16,10 @@
     "trailingComma": "all"
   },
   "lint-staged": {
-    "*.js": ["eslint --fix", "git add"],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
     "*.{json,css,md}": [
       "prettier --write --ignore-path .eslintignore",
       "git add"
