@@ -3,7 +3,7 @@ const { logger: _logger } = require('./index');
 
 function formatValue(arg) {
   if (typeof arg === 'function') {
-    return `ƒ() ${arg.name} {...}`;
+    return `ƒ() ${arg.name}({...})`;
   }
   if (arg && typeof arg === 'object' && !isPlainObject(arg)) {
     return arg.constructor.name;
@@ -20,7 +20,7 @@ function formatMethod(method, args) {
   return `${method}(${formatArguments(args)})`;
 }
 
-module.exports = function logify(target, property, desc, level = 'verbose') {
+module.exports = function logify(target, property, desc, level = 'debug') {
   // called with just a level: e.g. logify('info')
   if (arguments.length < 3) return (...args) => logify(...args, target);
 
@@ -40,7 +40,10 @@ module.exports = function logify(target, property, desc, level = 'verbose') {
     const result = method.apply(this, args);
 
     if (result && typeof result.then === 'function') {
-      result.then(logResult);
+      result.then(logResult, err => {
+        logger.error(`${msg} => ERROR`, err);
+        throw err;
+      });
     } else {
       logResult(result);
     }

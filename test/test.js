@@ -1,6 +1,6 @@
-const { logger, level, add } = require('../index');
+const { logger, setLevel } = require('../index');
 
-level('debug');
+setLevel('debug');
 
 logger.info('foo asfasfasfasf');
-add('socket', 'Socket.IO').info('foo asfasfasfasf');
+logger.add('socket', 'Socket.IO').info('foo asfasfasfasf');

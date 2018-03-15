@@ -1,4 +1,4 @@
-const omit = require('lodash/omit');
+const { inspect } = require('util');
 const { Container, config, format, transports } = require('winston');
 
 const { combine, colorize, label: addLabel, printf } = format;
@@ -9,9 +9,17 @@ const TEST = process.env.NODE_ENV === 'test';
 let LEVEL = 'info';
 
 const appendMeta = format(i => {
-  const meta = omit(i, ['level', 'message', 'label']);
+  const { level: _, message: _a, label: _b, ...meta } = i;
+  delete meta[Symbol.for('level')];
+
   if (!Object.keys(meta).length) return i;
-  i.message = `${i.message}\t${JSON.stringify(meta, null, 2)}`; // eslint-disable-line
+  // eslint-disable-next-line
+  i.message = `${i.message}:\t${inspect(meta, {
+    showProxy: true,
+    depth: 2,
+    maxArrayLength: 5,
+    colors: true,
+  })}`;
   return i;
 });
 
@@ -26,32 +34,40 @@ class ConsoleTransport extends transports.Console {
   }
 }
 
+const defaultFormat = label =>
+  combine(
+    ...[
+      colorize(),
+      label && addLabel({ label, message: true }),
+      appendMeta(),
+      printf(i => `${i.level}:  ${i.message}`),
+    ].filter(Boolean),
+  );
+
 function add(id, label = id) {
   container.add(id, {
     level: LEVEL,
-    format: combine(
-      ...[
-        colorize(),
-        label && addLabel({ label, message: true }),
-        appendMeta(),
-        printf(i => `${i.level}:  ${i.message}`),
-      ].filter(Boolean),
-    ),
+    format: defaultFormat(label),
     transports: [new ConsoleTransport({ silent: TEST })],
   });
   return container.get(id);
 }
 
+const logger = add('default', null);
+
+logger.add = add;
+logger.get = id => container.get(id);
+
 module.exports = {
+  logger,
   config,
-  add,
-  get: name => container.get(name),
-  level(level) {
+  format,
+  transports,
+  container,
+  setLevel(level) {
     LEVEL = level;
     Object.values(container.loggers).forEach(l => {
       l.level = level; // eslint-disable-line
     });
   },
-
-  logger: add('default', null),
 };
