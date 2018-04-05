@@ -50,12 +50,13 @@ function add(id, label = id) {
     format: defaultFormat(label),
     transports: [new ConsoleTransport({ silent: TEST })],
   });
-  return container.get(id);
+  const logger = container.get(id);
+  logger.add = add;
+  return logger;
 }
 
 const logger = add('default', null);
 
-logger.add = add;
 logger.get = id => container.get(id);
 
 module.exports = {
