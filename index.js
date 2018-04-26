@@ -34,6 +34,8 @@ class ConsoleTransport extends transports.Console {
   }
 }
 
+const consoleTransport = new ConsoleTransport({ silent: TEST, level: LEVEL });
+
 const defaultFormat = label =>
   combine(
     ...[
@@ -48,7 +50,7 @@ function add(id, label = id) {
   container.add(id, {
     level: LEVEL,
     format: defaultFormat(label),
-    transports: [new ConsoleTransport({ silent: TEST })],
+    transports: [consoleTransport],
   });
   const logger = container.get(id);
   logger.add = add;
@@ -70,5 +72,7 @@ module.exports = {
     Object.values(container.loggers).forEach(l => {
       l.level = level; // eslint-disable-line
     });
+    // why is this so dumb?
+    consoleTransport.level = level;
   },
 };
