@@ -1,15 +1,16 @@
 {
   "name": "@4c/logging",
-  "version": "0.2.2",
+  "version": "0.0.0-development",
   "main": "index.js",
   "repository": "https://github.com/4Catalyzer/logging.git",
   "author": "4Catalyzer",
   "license": "MIT",
   "scripts": {
-    "test": "node test/test.js",
+    "test": "jest",
     "lint": "eslint . && prettier --list-different --ignore-path .ignore '**/*.{json,css,md}'",
     "format": "eslint . --fix && prettier --write --ignore-path .eslintignore '**/*.{json,css,md}'",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "semantic-release": "semantic-release"
   },
   "prettier": {
     "printWidth": 79,
@@ -26,21 +27,33 @@
       "git add"
     ]
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "release": {
+    "extends": [
+      "@4c/semantic-release-config"
+    ]
+  },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.16.0",
-    "eslint-config-4catalyzer": "^0.4.1",
+    "@4c/semantic-release-config": "^1.0.2",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-4catalyzer": "^0.4.4",
     "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.7.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-prettier": "^2.5.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.10.2"
+    "jest": "^23.1.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.5",
+    "semantic-release": "^15.5.2"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
-    "winston": "^3.0.0-rc2"
+    "@4c/env": "^1.2.0",
+    "lodash": "^4.17.10",
+    "winston": "^3.0.0"
   }
 }
