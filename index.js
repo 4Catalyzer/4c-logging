@@ -1,16 +1,20 @@
 const { inspect } = require('util');
+const Env = require('@4c/env');
 const { Container, config, format, transports } = require('winston');
 
 const { combine, colorize, label: addLabel, printf } = format;
 
 const container = new Container();
-const TEST = process.env.NODE_ENV === 'test';
+const TEST = Env.get('NODE_ENV', '') === 'test';
+const useColor = Env.get.boolish('4C_LOGGING_USE_COLOR', true);
 
 let LEVEL = 'info';
 
 const appendMeta = format(i => {
   const { level: _, message: _a, label: _b, ...meta } = i;
+  // remove winston symbols
   delete meta[Symbol.for('level')];
+  delete meta[Symbol.for('splat')];
 
   if (!Object.keys(meta).length) return i;
   // eslint-disable-next-line
@@ -23,23 +27,10 @@ const appendMeta = format(i => {
   return i;
 });
 
-class ConsoleTransport extends transports.Console {
-  constructor(opts) {
-    super(opts);
-    this.silent = opts.silent;
-  }
-  log(...args) {
-    if (this.silent) return;
-    super.log(...args);
-  }
-}
-
-const consoleTransport = new ConsoleTransport({ silent: TEST, level: LEVEL });
-
 const defaultFormat = label =>
   combine(
     ...[
-      colorize(),
+      useColor && colorize(),
       label && addLabel({ label, message: true }),
       appendMeta(),
       printf(i => `${i.level}:  ${i.message}`),
@@ -50,7 +41,7 @@ function add(id, label = id) {
   container.add(id, {
     level: LEVEL,
     format: defaultFormat(label),
-    transports: [consoleTransport],
+    transports: [new transports.Console({ silent: TEST })],
   });
   const logger = container.get(id);
   logger.add = add;
@@ -69,10 +60,9 @@ module.exports = {
   container,
   setLevel(level) {
     LEVEL = level;
-    Object.values(container.loggers).forEach(l => {
-      l.level = level; // eslint-disable-line
-    });
-    // why is this so dumb?
-    consoleTransport.level = level;
+
+    for (const l of container.loggers.values()) {
+      l.level = level;
+    }
   },
 };

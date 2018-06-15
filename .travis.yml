@@ -6,6 +6,9 @@ node_js:
 
 cache: yarn
 
+after_success:
+  - yarn semantic-release
+
 branches:
   only:
     - master
