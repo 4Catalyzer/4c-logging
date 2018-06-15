@@ -2,7 +2,10 @@
   "name": "@4c/logging",
   "version": "0.0.0-development",
   "main": "index.js",
-  "repository": "https://github.com/4Catalyzer/logging.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4Catalyzer/4c-logging"
+  },
   "author": "4Catalyzer",
   "license": "MIT",
   "scripts": {
