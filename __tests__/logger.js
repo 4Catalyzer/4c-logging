@@ -30,7 +30,7 @@ describe('logging', () => {
 
   it('should set level', () => {
     logging.logger.debug('foo');
-    const fooLogger = logging.logger.add('foo');
+    const fooLogger = logging.logger.createLogger('foo');
 
     fooLogger.debug('foo');
 
@@ -45,15 +45,15 @@ describe('logging', () => {
   });
 
   it('should add loggers', () => {
-    logging.logger.add('socket', 'Socket.IO').info('foo');
+    logging.logger.createLogger('socket', 'Socket.IO').info('foo');
 
     expect(logSpy).toHaveBeenCalledWith('info:  [Socket.IO] foo');
   });
 
   it('sub loggers should be able to add new loggers', () => {
     logging.logger
-      .add('foo')
-      .add('bar')
+      .createLogger('foo')
+      .createLogger('bar')
       .info('foo');
 
     expect(logSpy).toHaveBeenCalledWith('info:  [bar] foo');
