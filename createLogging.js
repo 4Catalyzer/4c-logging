@@ -29,7 +29,11 @@ module.exports = function createLogging({
 } = {}) {
   const container = new Container();
   const TEST = Env.get('NODE_ENV', '') === 'test';
-  const useColor = Env.get.boolish('4C_LOGGING_USE_COLOR', true);
+
+  let useColor = Env.get.boolish('4C_LOGGING_USE_COLOR', null);
+  if (!useColor) {
+    useColor = Env.get.boolish('FOURC_LOGGING_USE_COLOR', true);
+  }
 
   // TODO: deprecate this as number prefixed env variables aren't standard
   let LEVEL = Env.get('4C_LOGGING_LEVEL', null);
