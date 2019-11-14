@@ -28,7 +28,7 @@ module.exports = function createLogging({
   Transport = transports.Console,
 } = {}) {
   const container = new Container();
-  const TEST = Env.get('NODE_ENV', '') === 'test';
+  const silenceLogger = Env.get.boolish('FOURC_SILENCE_LOGGING', false);
   const useColor = Env.get.boolish('4C_LOGGING_USE_COLOR', true);
 
   let LEVEL = Env.get('4C_LOGGING_LEVEL', 'info');
@@ -64,7 +64,7 @@ module.exports = function createLogging({
     container.add(id, {
       level: LEVEL,
       format: defaultFormat(label),
-      transports: [new Transport({ silent: TEST })],
+      transports: [new Transport({ silent: silenceLogger })],
     });
     const logger = container.get(id);
     logger.createLogger = createLogger;
