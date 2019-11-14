@@ -31,7 +31,11 @@ module.exports = function createLogging({
   const TEST = Env.get('NODE_ENV', '') === 'test';
   const useColor = Env.get.boolish('4C_LOGGING_USE_COLOR', true);
 
-  let LEVEL = Env.get('4C_LOGGING_LEVEL', 'info');
+  // TODO: deprecate this as number prefixed env variables aren't standard
+  let LEVEL = Env.get('4C_LOGGING_LEVEL', null);
+  if (!LEVEL) {
+    LEVEL = Env.get('FOURC_LOGGING_LEVEL', 'info');
+  }
 
   const appendMeta = format(i => {
     const { level: _, message: _a, label: _b, ...meta } = i;
