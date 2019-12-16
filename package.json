@@ -12,13 +12,12 @@
     "test": "jest",
     "lint": "eslint . && prettier --list-different --ignore-path .ignore '**/*.{json,css,md}'",
     "format": "eslint . --fix && prettier --write --ignore-path .eslintignore '**/*.{json,css,md}'",
-    "precommit": "lint-staged",
     "semantic-release": "semantic-release"
   },
-  "prettier": {
-    "printWidth": 79,
-    "singleQuote": true,
-    "trailingComma": "all"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
@@ -29,6 +28,11 @@
       "prettier --write --ignore-path .eslintignore",
       "git add"
     ]
+  },
+  "prettier": {
+    "printWidth": 79,
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "jest": {
     "testEnvironment": "node"
