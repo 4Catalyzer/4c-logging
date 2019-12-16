@@ -46,7 +46,7 @@
     "eslint-config-import": "^0.13.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jest": "^21.27.2",
+    "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-prettier": "^2.7.0",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
