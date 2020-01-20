@@ -42,22 +42,22 @@
     globby "^10.0.1"
     yargs "^15.0.1"
 
-"@4c/semantic-release-alt-publish-dir@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@4c/semantic-release-alt-publish-dir/-/semantic-release-alt-publish-dir-5.0.3.tgz#81d8d43061d1432559dbf51c038f73e7f4222589"
+"@4c/semantic-release-alt-publish-dir@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@4c/semantic-release-alt-publish-dir/-/semantic-release-alt-publish-dir-5.0.4.tgz#334e9983e36aa8448e69024e178bdda2573d9f69"
   dependencies:
     "@4c/file-butler" "^4.0.0"
-    "@semantic-release/npm" "^5.1.13"
+    "@semantic-release/npm" "^6.0.0"
 
-"@4c/semantic-release-config@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@4c/semantic-release-config/-/semantic-release-config-2.0.3.tgz#2fbeb6a847da8ec818a6a696a52460587ab40779"
+"@4c/semantic-release-config@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@4c/semantic-release-config/-/semantic-release-config-2.0.4.tgz#651e9a2541383de40623c49bbcceb7afb9cf0530"
   dependencies:
-    "@4c/semantic-release-alt-publish-dir" "^5.0.3"
+    "@4c/semantic-release-alt-publish-dir" "^5.0.4"
     "@semantic-release/changelog" "^3.0.4"
-    "@semantic-release/git" "^7.0.16"
-    "@semantic-release/github" "^5.4.2"
-    "@semantic-release/npm" "^5.1.13"
+    "@semantic-release/git" "^8.0.0"
+    "@semantic-release/github" "^6.0.0"
+    "@semantic-release/npm" "^6.0.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
@@ -440,41 +440,18 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
 
-"@semantic-release/git@^7.0.16":
-  version "7.0.18"
-  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-7.0.18.tgz#f37c076bc094762cb343dab49ab893d31de961e8"
+"@semantic-release/git@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@semantic-release/git/-/git-8.0.0.tgz#59be8e2cf061476a747c077808c2ccc01a217a2f"
   dependencies:
     "@semantic-release/error" "^2.1.0"
     aggregate-error "^3.0.0"
     debug "^4.0.0"
     dir-glob "^3.0.0"
-    execa "^3.2.0"
-    fs-extra "^8.0.0"
-    globby "^10.0.0"
+    execa "^4.0.0"
     lodash "^4.17.4"
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
-
-"@semantic-release/github@^5.4.2":
-  version "5.5.5"
-  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-5.5.5.tgz#4666367f16d8ad91fd1d3c71a7238498de14ec38"
-  dependencies:
-    "@octokit/rest" "^16.27.0"
-    "@semantic-release/error" "^2.2.0"
-    aggregate-error "^3.0.0"
-    bottleneck "^2.18.1"
-    debug "^4.0.0"
-    dir-glob "^3.0.0"
-    fs-extra "^8.0.0"
-    globby "^10.0.0"
-    http-proxy-agent "^2.1.0"
-    https-proxy-agent "^3.0.0"
-    issue-parser "^5.0.0"
-    lodash "^4.17.4"
-    mime "^2.4.3"
-    p-filter "^2.0.0"
-    p-retry "^4.0.0"
-    url-join "^4.0.0"
 
 "@semantic-release/github@^6.0.0":
   version "6.0.0"
@@ -496,23 +473,6 @@
     p-filter "^2.0.0"
     p-retry "^4.0.0"
     url-join "^4.0.0"
-
-"@semantic-release/npm@^5.1.13":
-  version "5.3.4"
-  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-5.3.4.tgz#2998cd9455aaedf278334d4a5b56f8e0b715919d"
-  dependencies:
-    "@semantic-release/error" "^2.2.0"
-    aggregate-error "^3.0.0"
-    execa "^3.2.0"
-    fs-extra "^8.0.0"
-    lodash "^4.17.15"
-    nerf-dart "^1.0.0"
-    normalize-url "^4.0.0"
-    npm "^6.10.3"
-    rc "^1.2.8"
-    read-pkg "^5.0.0"
-    registry-auth-token "^4.0.0"
-    tempy "^0.3.0"
 
 "@semantic-release/npm@^6.0.0":
   version "6.0.0"
@@ -2054,9 +2014,9 @@ escodegen@^1.9.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-4catalyzer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.0.1.tgz#66cacf4f972515a267f5fadcc469abc2b6186260"
+eslint-config-4catalyzer@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.0.2.tgz#8066995808a8771abbe2f2185ad59b14392dff5a"
   dependencies:
     babel-eslint "^10.0.2"
     eslint-config-airbnb-base "^14.0.0"
@@ -2260,7 +2220,7 @@ execa@^2.0.3:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
-execa@^3.1.0, execa@^3.2.0:
+execa@^3.1.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-3.4.0.tgz#c08ed4550ef65d858fac269ffc8572446f37eb89"
   dependencies:
@@ -2664,10 +2624,6 @@ get-stdin@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
-get-stdin@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-7.0.0.tgz#8d5de98f15171a125c5e516643c7a6d0ea8a96f6"
-
 get-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
@@ -2960,13 +2916,6 @@ https-proxy-agent@^2.2.3:
     agent-base "^4.3.0"
     debug "^3.1.0"
 
-https-proxy-agent@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-3.0.1.tgz#b8c286433e87602311b01c8ea34413d856a4af81"
-  dependencies:
-    agent-base "^4.3.0"
-    debug "^3.1.0"
-
 https-proxy-agent@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-4.0.0.tgz#702b71fb5520a132a66de1f67541d9e62154d82b"
@@ -2984,14 +2933,13 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-husky@^4.0.7:
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-4.0.7.tgz#cee4301d1db1d731be9c2aa2ac72b46439d30c91"
+husky@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-4.0.10.tgz#659b52c404d3163b943a73f6c1d454708c0226d8"
   dependencies:
     chalk "^3.0.0"
     ci-info "^2.0.0"
     cosmiconfig "^6.0.0"
-    get-stdin "^7.0.0"
     opencollective-postinstall "^2.0.2"
     pkg-dir "^4.2.0"
     please-upgrade-node "^3.2.0"
@@ -5998,9 +5946,9 @@ sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-semantic-release@^16.0.1:
-  version "16.0.1"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-16.0.1.tgz#db88ba663e792649e1317409058c979e640b10ee"
+semantic-release@^16.0.2:
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-16.0.2.tgz#4570b84324cbc2a82e71dbb75208b9f6c6c81570"
   dependencies:
     "@semantic-release/commit-analyzer" "^7.0.0"
     "@semantic-release/error" "^2.2.0"
