@@ -11,7 +11,7 @@ describe('logging', () => {
     global.console = { log: logSpy, error: errorSpy };
 
     // turn off color for easier asserts
-    process.env['4C_LOGGING_USE_COLOR'] = false;
+    process.env['FOURC_LOGGING_USE_COLOR'] = false;
 
     delete process.env.NODE_ENV;
     logging = require('../index');
