@@ -28,7 +28,7 @@ module.exports = function createLogging({
   Transport = transports.Console,
 } = {}) {
   const container = new Container();
-  const TEST = Env.get('NODE_ENV', '') === 'test';
+  const silenceLogger = Env.get.boolish('FOURC_SILENCE_LOGGING', Env.get('NODE_ENV', '') === 'test');
 
   // TODO: deprecate 4C_* as number prefixed env variables aren't standard
   const useColor =
@@ -73,7 +73,7 @@ module.exports = function createLogging({
     container.add(id, {
       level: LEVEL,
       format: defaultFormat(label),
-      transports: [new Transport({ silent: TEST })],
+      transports: [new Transport({ silent: silenceLogger })],
     });
     const logger = container.get(id);
     logger.createLogger = createLogger;
