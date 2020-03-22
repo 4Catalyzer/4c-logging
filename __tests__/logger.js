@@ -11,7 +11,7 @@ describe('logging', () => {
     global.console = { log: logSpy, error: errorSpy };
 
     // turn off color for easier asserts
-    process.env['FOURC_LOGGING_USE_COLOR'] = false;
+    process.env.FOURC_LOGGING_USE_COLOR = false;
 
     delete process.env.NODE_ENV;
     logging = require('../index');
@@ -51,10 +51,7 @@ describe('logging', () => {
   });
 
   it('sub loggers should be able to add new loggers', () => {
-    logging.logger
-      .createLogger('foo')
-      .createLogger('bar')
-      .info('foo');
+    logging.logger.createLogger('foo').createLogger('bar').info('foo');
 
     expect(logSpy).toHaveBeenCalledWith('info:  [bar] foo');
   });

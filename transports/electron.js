@@ -15,7 +15,7 @@ class ElectronTransport extends transports.Console {
       info[Symbol.for('message')] = info.message;
       /* eslint-enable no-param-reassign */
 
-      logger.transports.forEach(transport => transport.log(info));
+      logger.transports.forEach((transport) => transport.log(info));
     });
   }
 
