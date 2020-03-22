@@ -1,5 +1,5 @@
-const ElectronTransport = require('./transports/electron');
 const createLogging = require('./createLogging');
+const ElectronTransport = require('./transports/electron');
 
 module.exports = createLogging({
   Transport: ElectronTransport,
