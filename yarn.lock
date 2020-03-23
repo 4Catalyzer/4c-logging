@@ -42,18 +42,20 @@
     globby "^11.0.0"
     yargs "^15.0.1"
 
-"@4c/semantic-release-alt-publish-dir@^5.0.6":
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/@4c/semantic-release-alt-publish-dir/-/semantic-release-alt-publish-dir-5.0.6.tgz#80cdf362b30412d40fddad57f79d24f3fcf64525"
+"@4c/semantic-release-alt-publish-dir@^5.0.7":
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@4c/semantic-release-alt-publish-dir/-/semantic-release-alt-publish-dir-5.0.7.tgz#03cd3ca916f7b98edda3ecfb61559ab919306157"
   dependencies:
     "@4c/file-butler" "^4.1.0"
     "@semantic-release/npm" "^7.0.0"
+    execa "^4.0.0"
+    read-pkg-up "^7.0.1"
 
-"@4c/semantic-release-config@^2.0.6":
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/@4c/semantic-release-config/-/semantic-release-config-2.0.6.tgz#e53c12f6bc31d402b8559f5684640373ffe6e2fe"
+"@4c/semantic-release-config@^2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@4c/semantic-release-config/-/semantic-release-config-2.0.7.tgz#2c92c29269cf58fad38a1db010f1aafaede9bc58"
   dependencies:
-    "@4c/semantic-release-alt-publish-dir" "^5.0.6"
+    "@4c/semantic-release-alt-publish-dir" "^5.0.7"
     "@semantic-release/changelog" "^5.0.0"
     "@semantic-release/git" "^9.0.0"
     "@semantic-release/github" "^7.0.0"
@@ -2054,9 +2056,9 @@ eslint-config-import@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/eslint-config-import/-/eslint-config-import-0.13.0.tgz#082f3055e7ff651010526d35ac9a28ace438a544"
 
-eslint-config-prettier@^6.10.0:
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.10.0.tgz#7b15e303bf9c956875c948f6b21500e48ded6a7f"
+eslint-config-prettier@^6.10.1:
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.10.1.tgz#129ef9ec575d5ddc0e269667bf09defcd898642a"
   dependencies:
     get-stdin "^6.0.0"
 
@@ -5498,9 +5500,9 @@ read-pkg-up@^3.0.0:
     find-up "^2.0.0"
     read-pkg "^3.0.0"
 
-read-pkg-up@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.0.tgz#3f3e53858ec5ae5e6fe14bc479da0a7c98f85ff3"
+read-pkg-up@^7.0.0, read-pkg-up@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
   dependencies:
     find-up "^4.1.0"
     read-pkg "^5.2.0"
