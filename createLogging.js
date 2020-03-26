@@ -46,7 +46,7 @@ module.exports = function createLogging({
       ? Env.get('FOURC_LOGGING_LEVEL', 'info')
       : Env.get('4C_LOGGING_LEVEL', 'info');
 
-  const appendMeta = format(i => {
+  const appendMeta = format((i) => {
     const { level: _, message: _a, label: _b, ...meta } = i;
     // remove winston symbols
     delete meta[Symbol.for('level')];
@@ -63,13 +63,13 @@ module.exports = function createLogging({
     return i;
   });
 
-  const defaultFormat = label =>
+  const defaultFormat = (label) =>
     combine(
       ...[
         useColor && colorize(),
         label && addLabel({ label, message: true }),
         appendMeta(),
-        printf(i => `${i.level}:  ${i.message}`),
+        printf((i) => `${i.level}:  ${i.message}`),
       ].filter(Boolean),
     );
 
@@ -99,14 +99,15 @@ module.exports = function createLogging({
       const localLogger = this.logger || logger;
       const msg = formatMethod(message, args);
 
-      const logResult = r => localLogger[level](`${msg} => ${formatValue(r)}`);
+      const logResult = (r) =>
+        localLogger[level](`${msg} => ${formatValue(r)}`);
 
       localLogger[level](msg);
 
       const result = method.apply(this, args);
 
       if (result && typeof result.then === 'function') {
-        result.then(logResult, err => {
+        result.then(logResult, (err) => {
           localLogger.error(`${msg} => ERROR`, err);
           throw err;
         });
@@ -119,7 +120,7 @@ module.exports = function createLogging({
     return desc;
   }
 
-  logger.get = id => container.get(id);
+  logger.get = (id) => container.get(id);
 
   return {
     logify,
