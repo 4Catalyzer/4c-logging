@@ -76,7 +76,7 @@ module.exports = function createLogging({
   function createLogger(id, label = id, formatter = defaultFormat) {
     container.add(id, {
       level: LEVEL,
-      format: formatter({ label }),
+      format: formatter({ label, id }),
       transports: [new Transport({ silent: silenceLogger })],
     });
     const logger = container.get(id);
