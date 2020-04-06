@@ -63,7 +63,7 @@ module.exports = function createLogging({
     return i;
   });
 
-  const defaultFormat = (label) =>
+  const defaultFormat = ({ label }) =>
     combine(
       ...[
         useColor && colorize(),
@@ -73,10 +73,10 @@ module.exports = function createLogging({
       ].filter(Boolean),
     );
 
-  function createLogger(id, label = id) {
+  function createLogger(id, label = id, formatter = defaultFormat) {
     container.add(id, {
       level: LEVEL,
-      format: defaultFormat(label),
+      format: formatter({ label }),
       transports: [new Transport({ silent: silenceLogger })],
     });
     const logger = container.get(id);
