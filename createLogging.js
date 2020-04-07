@@ -53,6 +53,7 @@ module.exports = function createLogging({
     delete meta[Symbol.for('splat')];
 
     if (!Object.keys(meta).length) return i;
+
     // eslint-disable-next-line
     i.meta = inspect(meta, {
       showProxy: true,
@@ -60,12 +61,14 @@ module.exports = function createLogging({
       maxArrayLength: 5,
       colors: useColor,
     });
+
     return i;
   });
 
-  const defaultFormatter = printf(
-    (i) => `${i.level}:  ${i.message}${i.meta && `\t${i.meta}`}`,
-  );
+  const defaultFormatter = printf((i) => {
+    const message = `${i.level}:  ${i.message}`;
+    return i.meta ? `${message}\t${i.meta}` : message;
+  });
 
   function createLogger(id, label = id, formatter = defaultFormatter) {
     container.add(id, {
