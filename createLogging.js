@@ -63,20 +63,19 @@ module.exports = function createLogging({
     return i;
   });
 
-  const defaultFormat = ({ label }) =>
-    combine(
-      ...[
-        useColor && colorize(),
-        label && addLabel({ label, message: true }),
-        appendMeta(),
-        printf((i) => `${i.level}:  ${i.message}`),
-      ].filter(Boolean),
-    );
+  const defaultFormatter = printf((i) => `${i.level}:  ${i.message}`);
 
-  function createLogger(id, label = id, formatter = defaultFormat) {
+  function createLogger(id, label = id, formatter = defaultFormatter) {
     container.add(id, {
       level: LEVEL,
-      format: formatter({ label, id }),
+      format: combine(
+        ...[
+          useColor && colorize(),
+          label && addLabel({ label, message: true }),
+          appendMeta(),
+          formatter,
+        ].filter(Boolean),
+      ),
       transports: [new Transport({ silent: silenceLogger })],
     });
     const logger = container.get(id);
