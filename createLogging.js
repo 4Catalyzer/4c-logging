@@ -54,16 +54,18 @@ module.exports = function createLogging({
 
     if (!Object.keys(meta).length) return i;
     // eslint-disable-next-line
-    i.message = `${i.message}:\t${inspect(meta, {
+    i.meta = inspect(meta, {
       showProxy: true,
       depth: 2,
       maxArrayLength: 5,
-      colors: true,
-    })}`;
+      colors: useColor,
+    });
     return i;
   });
 
-  const defaultFormatter = printf((i) => `${i.level}:  ${i.message}`);
+  const defaultFormatter = printf(
+    (i) => `${i.level}:  ${i.message}${i.meta && `\t${i.meta}`}`,
+  );
 
   function createLogger(id, label = id, formatter = defaultFormatter) {
     container.add(id, {
