@@ -2456,10 +2456,10 @@ escodegen@^1.14.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-4catalyzer@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.4.0.tgz#9c139c377687ba0fb97e9982575716871610ee9f"
-  integrity sha512-E3HgunQM5GHbf/gTFTbhbSaY7YilQvNtt2S2lVsanH7LZTw8eJ0N6oOIPXnYTXHW7A5JXoPiBVqGxSqCmU2uug==
+eslint-config-4catalyzer@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-4catalyzer/-/eslint-config-4catalyzer-1.4.1.tgz#a57ace014ae378141943bf394f2836ece8ac4936"
+  integrity sha512-UMgCrHq91355tIeMUezsgSCyJegBfxXEP96/w4Z6Co3d2jtcfDP550SL1vSl7muCJwA8M++1KXQSjVYNw5n1Pw==
   dependencies:
     "@babel/eslint-parser" "^7.16.3"
     eslint-config-airbnb-base "^15.0.0"
